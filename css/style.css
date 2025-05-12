@@ -29,13 +29,14 @@ body {
     place-content: center;
     color: black;
 }
-
+/* titotlo header */
 h1 {
     font-size: 3rem;
     font-style: italic;
     font-family: "Edu Tas Beginner", "sans-serif";
 }
 
+/* photoblog section */
 .main {
     height: 100vh;
     background-image: url(../img/cork.png);
@@ -57,6 +58,7 @@ h1 {
 }
 
 .card {
+    min-width: 200px;
     padding: 10px;
     background-color: white;
 }
@@ -86,4 +88,18 @@ h1 {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 800px) {
+    .col {
+        width: calc(50% - 10px);
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .col {
+        width: 100%;
+    }
 }
