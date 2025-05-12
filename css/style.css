@@ -23,12 +23,18 @@ body {
 /* HEADER SECTION */
 
 .header {
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 100%;
     background-image: url(../img/wall.png);
     display: grid;
     height: 100px;
     place-content: center;
     color: black;
 }
+
 /* titotlo header */
 h1 {
     font-size: 3rem;
@@ -76,6 +82,7 @@ h1 {
     font-style: italic;
     font-family: "Sometype Mono", "monospace";
 }
+
 .col::after {
     content: '';
     position: absolute;
