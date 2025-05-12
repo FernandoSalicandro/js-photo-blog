@@ -31,8 +31,9 @@ body {
 }
 
 h1 {
+    font-size: 3rem;
     font-style: italic;
-    font-family: ‘Edu Tas Beginner’, sans-serif;
+    font-family: "Edu Tas Beginner", "sans-serif";
 }
 
 .main {
@@ -50,7 +51,8 @@ h1 {
 
 
 .col {
-    margin-top: 20px;
+    position: relative;
+    margin-top: 50px;
     width: calc(100% / 3 - 10px);
 }
 
@@ -63,12 +65,25 @@ h1 {
 .date {
     font-weight: 600;
     color: rgb(203, 203, 203);
-    font-family: ‘Edu Tas Beginner’, sans-serif;
+    font-family: "Edu Tas Beginner", "sans-serif";
 }
 
 .title {
-    font-size:1.2rem;
+    font-size: 1.2rem;
     font-weight: 600;
     font-style: italic;
-    font-family: ‘Sometype Mono’, ‘monospace’;
+    font-family: "Sometype Mono", "monospace";
+}
+.col::after {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    aspect-ratio: 1;
+    background-image: url(../img/pin.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
