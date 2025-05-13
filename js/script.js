@@ -1,34 +1,59 @@
 //DOM
-const photoBlogSection = document.querySelector(`.row`)
-//API
+const photoBlogSection = document.querySelector(`.row`);
+const overlayOn = document.querySelector(`.overlay`);
+const overlayImage = overlayOn.querySelector(`img`);
+const closeBtn = overlayOn.querySelector(`.close`);
+
+// API
+
+// URL dell'API
 const apiUrl = `https://lanciweb.github.io/demo/api/pictures/`;
 
-//CHIAMATA AJAX
+//FETCH DEI DATI E CREAZIONE DELLE CARD
 axios.get(apiUrl).then((response) => {
+    // Inizializzazo il template delle card
     let template = ``;
 
-    // PRELIEVO OGGETTI DALL'ARRAY RESPONSE
+    // Ciclo su ogni elemento della response API
     response.data.forEach(elem => {
+        // Destrutturo i dati ricevuti
+        const { title, date, url } = elem;
 
-        // DESTRUCTURING DELLE CHIAVI UTILI AL TEMPLATE
-        const { title, date, url } = elem
-
-        // CREAZIONE TEMPLATE
-        template += ` <div class="col">
-                    <div class="card">
-                        <img src=${url} alt="">
-                        <p class="date">${date}</p>
-                        <p class="title">${title}</p>
-                    </div>
-                </div>`
+        // creo il template  per ogni card
+        template += `
+        <div class="col">
+            <div class="card">
+                <img src="${url}" alt="">
+                <p class="date">${date}</p>
+                <p class="title">${title}</p>
+            </div>
+        </div>`;
     });
-    // INIEZIONE TEMPLATE NELLA ROW DEDICATA
+
+    // Inietto il template nel DOM
     photoBlogSection.innerHTML = template;
-})
 
+    //EVENTI
 
+    // Seleziono tutte le card
+    const cards = document.querySelectorAll(`.card`);
 
+    // Aggiungo l'event listener per ogni card
+    cards.forEach((card) => {
+        card.addEventListener(`click`, function () {
+            // Ogni volta che clicco sulla una card
+            // 
+            // Prendo l'url dell'immagine cliccata
+            const clickedImg = card.querySelector("img").src;
+            // Imposto l'immagine nell'overlay (corrispondente a quella della card clickata)   
+            overlayImage.src = clickedImg;
+            // Mostro l'overlay                    
+            overlayOn.classList.remove("hidden");
+        });
+    });
 
-
-
-
+    //Aggiungo l'event listener per il pulsante di chiusura overlay
+    closeBtn.addEventListener(`click`, function () {
+        overlayOn.classList.add("hidden");
+    });
+});
