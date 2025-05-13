@@ -1,17 +1,8 @@
-/* Reset generale */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Stili globali */
-img {
-    aspect-ratio: 1;
-    max-width: 100%;
-    padding-bottom: 20px;
-}
-
 
 .container {
     width: 80%;
@@ -19,17 +10,16 @@ img {
     max-width: 1000px;
 }
 
+img {
+    aspect-ratio: 1;
+    max-width: 100%;
+    padding-bottom: 20px;
+}
 
 body {
     height: 100vh;
 }
 
-
-/*////////////////////////////////
-         UTILITIES
-////////////////////////////////*/
-
-/* Utility flex */
 .flex {
     display: flex;
 }
@@ -42,12 +32,7 @@ body {
     align-items: center;
 }
 
-/* Utility class per nascondere elementi */
-.hidden {
-    display: none;
-}
-
-/* ---- HEADER ---- */
+/* HEADER SECTION */
 .header {
     position: sticky;
     left: 0;
@@ -67,33 +52,30 @@ h1 {
     font-family: "Edu Tas Beginner", "sans-serif";
 }
 
-/* ----PHOTOBLOG SECTION ---- */
+/* photoblog section */
 .main {
-    overflow: auto;
+    overflow-y: scroll;
     height: 100vh;
     width: 100vw;
     background-image: url(../img/cork.png);
 }
 
-/*Layout a griglia per le cards */
 .row {
     justify-content: center;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    
 }
 
-/* Colonna contenitore della card */
 .col {
     position: relative;
     margin-top: 50px;
     width: calc(100% / 3 - 10px);
-    /*z-index che mi serve per l'hover delle card */
     z-index: 1;
 }
 
-/*hover sulla colonna */
 .col:hover {
     z-index: 10;
 }
@@ -102,7 +84,6 @@ h1 {
     opacity: 0;
 }
 
-/* Stile della card */
 .card {
     min-width: 200px;
     padding: 10px;
@@ -110,7 +91,6 @@ h1 {
     transition: transform 0.3s ease;  
 }
 
-/* Testo dentro la card */
 .date {
     font-weight: 600;
     color: rgb(203, 203, 203);
@@ -124,7 +104,6 @@ h1 {
     font-family: "Sometype Mono", "monospace";
 }
 
-/* Pin */
 .col::after {
     content: "";
     position: absolute;
@@ -139,9 +118,11 @@ h1 {
     background-position: center;
 }
 
-/* ---- OVERLAY SECTION ---- */
+/* OVERLAY */
 .overlay {
     position: fixed;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.8);
@@ -151,34 +132,37 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 20px;
+        
+    
 }
 
-/* Immagine nell'overlay */
 .overlay img {
     padding-bottom: 0;
     max-width: 50%;
     height: auto;
-    box-shadow: 0 0 40px;
+    box-shadow: 0 0 20px;
 }
 
-/* Effetto hover sulla card */
 .card:hover {
-    /* ingrandisco,ruoto e cambio pointer */
-    cursor: pointer;
-    transform: scale(1.05) rotateZ(30deg);
+    transform : scale(1.05) rotateZ(30deg);
+
+
+
 }
 
-/* Pulsante di chiusura overlay */
 .close {
+    z-index: 1000;
     padding: 10px 20px;
     font-size: 1.2rem;
     cursor: pointer;
 }
 
 
-/* MEDIA QUERIES */
+.hidden {
+    display: none;
+}
 
-/* Tablet */
+/* Responsive */
 @media screen and (max-width: 800px) {
     .col {
         width: calc(50% - 10px);
@@ -189,13 +173,13 @@ h1 {
     }
 }
 
-/* Mobile */
 @media screen and (max-width: 510px) {
     .col {
         width: 100%;
     }
 
     .overlay img {
+        
         width: 100%;
     }
 }
